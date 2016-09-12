@@ -1,16 +1,22 @@
 class Room
-	attr_reader :name, :description, :rooms
+	attr_reader :name, :description, :rooms, :objects
 	
-	def initialize name, description
+	def initialize name, description, objects = []
 		@name = name
 		@description = description
-		@rooms = []
+		@objects = objects
+    @rooms = []
 	end
 	
 	def enter
 		puts "Room: #{@name}"
 		puts @description
-		unless @rooms.empty?
+    
+		unless @objects.empty?
+      show_objects
+    end
+    
+    unless @rooms.empty?
 			show_rooms
 		end
 	end
@@ -24,4 +30,10 @@ class Room
 			puts "#{i} - #{room.name}"
 		end
 	end
+  
+  def show_objects
+    @objects.each do |object|
+      object.look
+    end
+  end
 end

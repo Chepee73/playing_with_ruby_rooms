@@ -1,10 +1,14 @@
 require './room.rb'
+require './object.rb'
 
 def main
 	playing = true
 	
-	# objs
-	kitchen = Room.new "Kitchen", "You're in the kitchen"
+  # objects
+  kitchen_objects = [RoomObject.new("Table", "There is nothing on the table"), RoomObject.new("Stove", "Nothing here")]
+  
+	# rooms
+	kitchen = Room.new "Kitchen", "You're in the kitchen", kitchen_objects
 	bathroom = Room.new "Bathroom", "You're in the bathroom"
 	living = Room.new "Living room", "You're in the living room"
 	
