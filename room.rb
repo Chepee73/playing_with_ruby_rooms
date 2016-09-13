@@ -11,29 +11,44 @@ class Room
 	def enter
 		puts "Room: #{@name}"
 		puts @description
+   
+    show_objects
     
-		unless @objects.empty?
-      show_objects
-    end
-    
-    unless @rooms.empty?
-			show_rooms
-		end
+		show_rooms
+		
 	end
 	
 	def add_room room
 		@rooms << room
 	end
 	
+  def add_object object
+    @objects << add
+  end
+  
+  def remove_object object_name
+    unless @objects.empty?
+      @objects.delete_if do |object| 
+        object.name == object_name 
+      end
+    end
+  
+  end
+  
 	def show_rooms
-		@rooms.each_with_index do |room, i|
-			puts "#{i} - #{room.name}"
-		end
+		unless @rooms.empty?
+      @rooms.each_with_index do |room, i|
+        puts "#{i} - #{room.name}"
+      end
+    end
 	end
   
   def show_objects
-    @objects.each do |object|
-      object.look
+    unless @objects.empty?
+      @objects.each do |object|
+        object.look
+      end
     end
   end
+  
 end
